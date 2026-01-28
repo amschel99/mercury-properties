@@ -1,26 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Mercury Properties Color Palette */
+  --mercury-black: #0E0E11;
+  --mercury-charcoal: #151518;
+  --mercury-card: #1A1A1F;
+  --mercury-emerald: #0F766E;
+  --mercury-emerald-dark: #064E3B;
+  --mercury-gold: #E5C07B;
+  --mercury-gold-light: #F0D9A0;
+  --mercury-white: #F5F5F5;
+  --mercury-gray: #A1A1AA;
+  --mercury-gray-dark: #71717A;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  
+  --background: var(--mercury-black);
+  --foreground: var(--mercury-white);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-mercury-black: #0E0E11;
+  --color-mercury-charcoal: #151518;
+  --color-mercury-card: #1A1A1F;
+  --color-mercury-emerald: #0F766E;
+  --color-mercury-emerald-dark: #064E3B;
+  --color-mercury-gold: #E5C07B;
+  --color-mercury-gold-light: #F0D9A0;
+  --color-mercury-white: #F5F5F5;
+  --color-mercury-gray: #A1A1AA;
+  --color-mercury-gray-dark: #71717A;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'DM Sans', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--mercury-black);
+  color: var(--mercury-white);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mercury-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mercury-gray-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mercury-emerald);
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Glow Effects */
+.glow-emerald {
+  box-shadow: 0 0 40px rgba(15, 118, 110, 0.3);
+}
+
+.glow-gold {
+  box-shadow: 0 0 40px rgba(229, 192, 123, 0.2);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 30px rgba(229, 192, 123, 0.5);
+}
+
+/* Gradient Backgrounds */
+.gradient-radial {
+  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(15, 118, 110, 0.15), transparent);
+}
+
+.gradient-radial-gold {
+  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(229, 192, 123, 0.08), transparent);
+}
+
+/* Animation Utilities */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Custom Selection */
+::selection {
+  background: rgba(15, 118, 110, 0.4);
+  color: var(--mercury-white);
+}
+
+/* Form Styles */
+input, select, textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--mercury-white);
+  font-family: inherit;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--mercury-gray-dark);
+}
+
+/* Button Base */
+.btn-primary {
+  background: linear-gradient(135deg, var(--mercury-emerald), var(--mercury-emerald-dark));
+  color: var(--mercury-white);
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(15, 118, 110, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(15, 118, 110, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--mercury-white);
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--mercury-gold);
+  color: var(--mercury-gold);
+}
+
+/* Noise Texture Overlay */
+.noise::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 1000;
+}
+
+/* Grid Pattern */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Range Slider Styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--mercury-charcoal);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mercury-emerald), var(--mercury-emerald-dark));
+  margin-top: -8px;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.4);
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-track {
+  background: var(--mercury-charcoal);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mercury-emerald), var(--mercury-emerald-dark));
+  border: none;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.4);
+}
+
+.slider-emerald::-webkit-slider-thumb {
+  background: linear-gradient(135deg, var(--mercury-emerald), var(--mercury-emerald-dark));
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.4);
+}
+
+.slider-gold::-webkit-slider-thumb {
+  background: linear-gradient(135deg, var(--mercury-gold), #D4A84A);
+  box-shadow: 0 4px 12px rgba(229, 192, 123, 0.4);
+}
+
+.slider-emerald::-moz-range-thumb {
+  background: linear-gradient(135deg, var(--mercury-emerald), var(--mercury-emerald-dark));
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.4);
+}
+
+.slider-gold::-moz-range-thumb {
+  background: linear-gradient(135deg, var(--mercury-gold), #D4A84A);
+  box-shadow: 0 4px 12px rgba(229, 192, 123, 0.4);
+}
+
+/* Custom Scrollbar for form dropdowns */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--mercury-gray-dark);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--mercury-emerald);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
