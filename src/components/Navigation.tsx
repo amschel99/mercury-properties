@@ -4,7 +4,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-export default function Navigation() {
+interface NavigationProps {
+  onRenterClick?: () => void;
+  onLandlordClick?: () => void;
+}
+
+export default function Navigation({ onRenterClick, onLandlordClick }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -20,20 +25,20 @@ export default function Navigation() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glass-strong py-4' : 'py-6'
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        scrolled 
+          ? 'bg-mercury-black/95 backdrop-blur-xl py-2' 
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-4 group">
           <div className="relative">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-mercury-emerald to-mercury-emerald-dark flex items-center justify-center">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-mercury-white">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="Mercury Properties" 
+              className="w-32 h-32 md:w-40 md:h-40 object-contain"
+            />
             <div className="absolute inset-0 rounded-xl bg-mercury-emerald blur-xl opacity-0 group-hover:opacity-40 transition-opacity" />
           </div>
           <span className="text-xl font-semibold tracking-tight">
@@ -49,18 +54,18 @@ export default function Navigation() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link 
-            href="/apply/renter"
+          <button 
+            onClick={onRenterClick}
             className="hidden sm:block px-5 py-2.5 text-sm font-medium text-mercury-white hover:text-mercury-gold transition-colors"
           >
             Apply Now
-          </Link>
-          <Link
-            href="/apply/landlord"
+          </button>
+          <button
+            onClick={onLandlordClick}
             className="px-5 py-2.5 text-sm font-medium bg-gradient-to-r from-mercury-emerald to-mercury-emerald-dark rounded-lg hover:shadow-lg hover:shadow-mercury-emerald/20 transition-all hover:-translate-y-0.5"
           >
             List Property
-          </Link>
+          </button>
         </div>
       </div>
     </motion.nav>

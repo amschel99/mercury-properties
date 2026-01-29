@@ -65,14 +65,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-mercury-emerald to-mercury-emerald-dark flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-mercury-white">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
+            <Link href="/" className="flex items-center gap-4 mb-4">
+              <img 
+                src="/logo.png" 
+                alt="Mercury Properties" 
+                className="w-32 h-32 md:w-40 md:h-40 object-contain"
+              />
               <span className="text-xl font-semibold">
                 Mercury<span className="text-mercury-gold">.</span>
               </span>

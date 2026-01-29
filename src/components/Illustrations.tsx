@@ -343,7 +343,7 @@ export function KeyIllustration({ className = '' }: { className?: string }) {
 
 export function FloatingShapes() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
       {/* Floating circles */}
       <motion.div
         className="absolute w-64 h-64 rounded-full border border-mercury-emerald/10"
