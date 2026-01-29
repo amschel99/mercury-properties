@@ -55,7 +55,7 @@ export default function Hero({ onRenterClick, onLandlordClick }: HeroProps) {
               className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-6"
             >
               <span className="block">Rent Smarter.</span>
-              <span className="block mt-2 bg-gradient-to-r from-mercury-gold via-mercury-gold-light to-mercury-gold bg-clip-text text-transparent text-glow-gold">
+              <span className="block mt-2 text-mercury-gold">
                 Own Stress-Free.
               </span>
             </motion.h1>
