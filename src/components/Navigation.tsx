@@ -56,7 +56,7 @@ export default function Navigation({ onRenterClick, onLandlordClick }: Navigatio
               <img 
                 src="/logo.png" 
                 alt="Mercury Properties" 
-                className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain"
+                className="w-36 h-36 sm:w-40 sm:h-40 md:w-32 md:h-32 lg:w-40 lg:h-40 object-contain"
               />
               <div className="absolute inset-0 rounded-xl bg-mercury-emerald blur-xl opacity-0 group-hover:opacity-40 transition-opacity" />
             </div>
